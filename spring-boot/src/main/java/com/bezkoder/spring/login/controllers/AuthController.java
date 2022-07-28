@@ -34,7 +34,7 @@ import com.bezkoder.spring.login.repository.UserRepository;
 import com.bezkoder.spring.login.security.jwt.JwtUtils;
 import com.bezkoder.spring.login.security.services.UserDetailsImpl;
 
-@CrossOrigin(origins = "http://localhost:8080", maxAge = 3600, allowCredentials="true")
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -52,7 +52,7 @@ public class AuthController {
 
   @Autowired
   JwtUtils jwtUtils;
-
+  
   @PostMapping("/signin")
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
