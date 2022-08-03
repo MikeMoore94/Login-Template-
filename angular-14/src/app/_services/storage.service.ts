@@ -17,6 +17,11 @@ export class StorageService {
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
+  public getUserRoles(): any {
+    const user = window.sessionStorage.getItem(USER_KEY);
+    
+  }
+
   public getUser(): any {
     const user = window.sessionStorage.getItem(USER_KEY);
     if (user) {
@@ -25,6 +30,8 @@ export class StorageService {
 
     return {};
   }
+
+  
 
   public isLoggedIn(): boolean {
     const user = window.sessionStorage.getItem(USER_KEY);

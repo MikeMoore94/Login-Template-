@@ -28,6 +28,7 @@ export class AppComponent {
 
       this.username = user.username;
     }
+    
   }
 
   logout(): void {

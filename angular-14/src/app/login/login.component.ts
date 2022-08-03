@@ -20,11 +20,13 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private storageService: StorageService) { }
 
   ngOnInit(): void {
+    
     if (this.storageService.isLoggedIn()) {
       this.isLoggedIn = true;
       this.roles = this.storageService.getUser().roles;
     }
   }
+  
 
   onSubmit(): void {
     const { username, password } = this.form;
@@ -44,8 +46,11 @@ export class LoginComponent implements OnInit {
       }
     });
   }
+  
 
   reloadPage(): void {
     window.location.reload();
   }
+
+ 
 }

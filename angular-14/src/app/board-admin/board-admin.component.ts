@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/user';
 import { UserService } from '../_services/user.service';
+import { StorageService } from '../_services/storage.service';
 
 @Component({
   selector: 'app-board-admin',
@@ -9,9 +11,15 @@ import { UserService } from '../_services/user.service';
 export class BoardAdminComponent implements OnInit {
   content?: string;
 
-  constructor(private userService: UserService) { }
+  users : User[] = [];
+  currentUser: any;
+
+
+  constructor(private userService: UserService, private storageService: StorageService) { }
 
   ngOnInit(): void {
+    this.getUsers();
+    this.currentUser = this.storageService.getUser();
     this.userService.getAdminBoard().subscribe({
       next: data => {
         this.content = data;
@@ -30,4 +38,15 @@ export class BoardAdminComponent implements OnInit {
       }
     });
   }
+
+  private getUsers() {
+    this.userService.getUsers().subscribe(data => {
+      this.users = data;
+      console.log(data)
+    })
+
+
+  }
+
+  
 }
